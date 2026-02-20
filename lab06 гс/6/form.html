@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f5f7fa; 
+        }
+
+        .form-container {
+            padding: 20px;
+            border: 1px solid #ccc; 
+            max-width: 400px;
+            width: 100%;
+        }
+        
+        label, input, textarea, button {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px; 
+            box-sizing: border-box; 
+        }
+        
+        textarea {
+            resize: vertical; 
+        }
+    </style>
+</head>
+<body>
+<div class="form-container">
+        <h2>Форма для отправки сообщения</h2>
+        <form id="emailForm">
+            <label for="from">От кого:</label>
+            <input type="email" id="from" name="from" placeholder="Ваш email" required>
+
+            <label for="to">Кому:</label>
+            <input type="email" id="to" name="to" placeholder="Email получателя" required>
+
+            <label for="message">Сообщение:</label>
+            <textarea id="message" name="message" rows="6" placeholder="Введите ваше сообщение здесь..." required></textarea>
+
+            <button type="submit">Отправить сообщение</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('emailForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const formData = {
+                from: document.getElementById('from').value,
+                to: document.getElementById('to').value,
+                message: document.getElementById('message').value
+            };
+
+            fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.text())
+            .then(data => { alert(data); })
+            .catch(error => { console.error('Ошибка:', error); });
+        });
+    </script>
+</body>
+</html>
