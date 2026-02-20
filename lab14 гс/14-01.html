@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Pulpits API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .block {
+            margin-bottom: 25px;
+            padding: 15px;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+        .success {
+            color: green;
+            font-weight: bold;
+        }
+        input {
+            margin: 3px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Pulpits API Test Page</h1>
+
+<div id="message"></div>
+
+<div class="block">
+    <h3>GET /api/pulpits</h3>
+    <button onclick="getPulpits()">Получить список</button>
+    <pre id="getResult"></pre>
+</div>
+
+<div class="block">
+    <h3>POST /api/pulpits</h3>
+    <input id="post_pulpit" placeholder="PULPIT">
+    <input id="post_name" placeholder="PULPIT_NAME">
+    <input id="post_faculty" placeholder="FACULTY">
+    <button onclick="postPulpit()">Добавить</button>
+    <pre id="postResult"></pre>
+</div>
+
+<div class="block">
+    <h3>PUT /api/pulpits</h3>
+    <input id="put_pulpit" placeholder="PULPIT (ключ)">
+    <input id="put_name" placeholder="Новое имя">
+    <input id="put_faculty" placeholder="FACULTY">
+    <button onclick="putPulpit()">Обновить</button>
+    <pre id="putResult"></pre>
+</div>
+
+<div class="block">
+    <h3>DELETE /api/pulpits/:code</h3>
+    <input id="delete_code" placeholder="Код кафедры">
+    <button onclick="deletePulpit()">Удалить</button>
+    <pre id="deleteResult"></pre>
+</div>
+
+
+<script>
+async function apiRequest(method, url, body = null) {
+    const msg = document.getElementById("message");
+    msg.innerHTML = "";
+
+    try {
+        const options = { method, headers: { "Content-Type": "application/json" } };
+        if (body) options.body = JSON.stringify(body);
+
+        const resp = await fetch(url, options);
+        const data = await resp.json();
+
+        if (data.error) {
+            msg.innerHTML = `<div class="error">Ошибка: ${data.error}</div>`;
+        } else {
+            msg.innerHTML = `<div class="success">Успех</div>`;
+        }
+
+        return data;
+
+    } catch (e) {
+        msg.innerHTML = `<div class="error">${e.message}</div>`;
+        return { error: e.message };
+    }
+}
+
+async function getPulpits() {
+    const data = await apiRequest("GET", "/api/pulpits");
+    document.getElementById("getResult").textContent = JSON.stringify(data, null, 2);
+}
+
+async function postPulpit() {
+    const body = {
+        pulpit: document.getElementById("post_pulpit").value,
+        pulpit_name: document.getElementById("post_name").value,
+        faculty: document.getElementById("post_faculty").value
+    };
+
+    const data = await apiRequest("POST", "/api/pulpits", body);
+    document.getElementById("postResult").textContent = JSON.stringify(data, null, 2);
+}
+
+async function putPulpit() {
+    const body = {
+        pulpit: document.getElementById("put_pulpit").value,
+        pulpit_name: document.getElementById("put_name").value,
+        faculty: document.getElementById("put_faculty").value
+    };
+
+    const data = await apiRequest("PUT", "/api/pulpits", body);
+    document.getElementById("putResult").textContent = JSON.stringify(data, null, 2);
+}
+
+async function deletePulpit() {
+    const code = document.getElementById("delete_code").value;
+
+    const data = await apiRequest("DELETE", `/api/pulpits/${code}`);
+    document.getElementById("deleteResult").textContent = JSON.stringify(data, null, 2);
+}
+</script>
+
+</body>
+</html>
