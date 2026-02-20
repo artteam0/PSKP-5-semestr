@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h1>ФИО: </h1>
+        <h2 id="inner"></h2>
+        <script>
+            let input = document.getElementById("inner");
+            fetch('/api/name')
+                .then(response => response.text())
+                .then(responseText => { console.log(responseText); input.innerHTML = responseText })
+        </script>
+    </body>
+</html>
