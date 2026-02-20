@@ -1,0 +1,19 @@
+{
+    "players": [
+        {
+            "name": "Erling",
+            "surname": "Halland",
+            "club": "Manchester City"
+        },
+        {
+            "name": "Phil",
+            "surname": "Foden",
+            "club": "Manchester City"
+        },
+        {
+            "name": "Ruben",
+            "surname": "Dias",
+            "club": "Manchester City"
+        }
+    ]
+}

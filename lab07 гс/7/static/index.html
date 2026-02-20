@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторная работа №7</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <a id="TagA" href="docx/lab07.docx" download="lab07.docx">download docxFile</a>
+    
+    <img id="TagIMG" src="img/car.png" height="400" width="400">
+    <video id="TagVideo" src="video/snow.mp4" controls></video>
+    <p id="json"></p>
+    <button id="buttonJson" type="button">View json File</button>
+    <p id="xml"></p>
+    <button id="buttonXml" type="button">View xml File</button>
+
+    <script>
+        for (let a in window){
+            console.log(a);
+        }
+        console.log(window.location.origin);
+    </script>
+</body>
+
+<script src="js/script.js"></script>
+</html>

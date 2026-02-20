@@ -1,0 +1,75 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #4CAF50;
+}
+
+#TagA {
+    display: inline-block;
+    margin: 10px 0;
+    padding: 8px 12px;
+    color: #ffffff;
+    background-color: #4CAF50;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+#TagA:hover {
+    background-color: #45a049;
+}
+
+#TagIMG {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+}
+
+#TagVideo {
+    display: block;
+    width: 80%;
+    max-width: 600px;
+    margin: 20px 0;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    padding: 8px 16px;
+    margin: 10px 5px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#json, #xml {
+    padding: 10px;
+    margin-top: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 600px;
+    background-color: #f1f1f1;
+    text-align: left;
+    white-space: pre-wrap;
+}
