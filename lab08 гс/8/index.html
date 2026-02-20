@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head> 
+<body>
+
+   <form action="/formparameter" method="POST">
+        <div>
+            <label for="text-field">Текстовое поле:</label>
+            <input type="text" id="text-field" name="text_field" value="qwerty">
+        </div>
+        <div>
+            <label for="num-field">Числовое поле:</label>
+            <input type="number" id="num-field" name="number_field" value="123">
+        </div>
+        <div>
+            <label for="date-field">Поле с датой:</label>
+            <input type="date" id="date-field" name="date_field">
+        </div>
+        <div>
+            <label>Чекбоксы:</label>
+            <input type="checkbox" id="check1" name="options" value="option_1">
+            <label for="check1">Опция 1</label><br>
+            <input type="checkbox" id="check2" name="options" value="option_2" checked>
+            <label for="check2">Опция 2</label><br>
+            <input type="checkbox" id="check3" name="options" value="option_3">
+            <label for="check3">Опция 3</label>
+        </div>
+        <div>
+            <label>Радио-кнопки:</label>
+            <input type="radio" id="radio-yes" name="choice" value="yes" checked>
+            <label for="radio-yes">Да</label><br>
+            <input type="radio" id="radio-no" name="choice" value="no">
+            <label for="radio-no">Нет</label>
+        </div>
+        <div>
+            <label for="textarea-field">Текстовая область:</label>
+            <textarea id="textarea-field" name="comments" rows="4"></textarea>
+        </div>
+        <div>
+            <input type="submit" name="action" value="Сохранить как черновик">
+            <input type="submit" name="action" value="Опубликовать">
+        </div>
+    </form>
+</body>
+<script>
+    for (let key in location) {
+  console.log(key + ": " + location[key]);
+}
+
+</script>
+</html>
+
