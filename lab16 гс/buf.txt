@@ -1,0 +1,144 @@
+{"query": "query { getFaculties { faculty, faculty_name, pulpits { pulpit, pulpit_name } } }"}
+
+{"query": "query ($code: String) { getFaculties(faculty: $code) { faculty, faculty_name } }", "variables": { "code": "ИТ" } }
+
+
+{"query": "query { getPulpits { pulpit, pulpit_name, faculty } }"}
+
+{"query": "query ($code: String) { getPulpits(pulpit: $code) { pulpit, pulpit_name, faculty } }",
+"variables": { "code": "ИСиТ" }}
+
+{
+  "query": "query { getSubjects { subject, subject_name, pulpit } }"
+}
+
+{
+  "query": "query ($code: String) { getSubjects(subject: $code) { subject, subject_name, pulpit } }",
+  "variables": {
+    "code": "БД"
+  }
+}
+
+
+{
+  "query": "query { getPulpits { pulpit, pulpit_name, subjects { subject, subject_name } } }"
+}
+
+
+
+
+
+{
+  "query": "query { getTeachers { teacher, teacher_name, pulpit } }"
+}
+
+
+{
+  "query": "query ($code: String) { getTeachers(teacher: $code) { teacher, teacher_name, pulpit } }",
+  "variables": {
+    "code": "DMN"
+  }
+}
+
+
+{
+  "query": "query ($code: String!) { getTeachersByFaculty(faculty: $code)  { teacher, teacher_name, pulpit } }",
+  "variables": {
+    "code": "ИТ"
+  }
+}
+
+{
+  "query": "query ($code: String!) { getSubjectsByFaculties(faculty: $code) { pulpit, pulpit_name, subjects { subject, subject_name } } }",
+  "variables": {
+    "code": "ИТ"
+  }
+}
+
+
+
+
+
+
+
+
+{ "query": "mutation ($input: FacultyInput!) { setFaculty(faculty: $input) { faculty, faculty_name } }", "variables": { "input": { "faculty": "ТК", "faculty_name": "Тест-Факультет" } } }
+
+
+
+{ "query": "mutation ($code: String!) { delFaculty(faculty: $code) }", "variables": { "code": "ТК" } }
+
+
+
+{
+  "query": "mutation ($input: PulpitInput!) { setPulpit(pulpit: $input) { pulpit, pulpit_name, faculty } }",
+  "variables": {
+    "input": {
+      "pulpit": "ТКП",
+      "pulpit_name": "Тестовая Кафедра Программирования",
+      "faculty": "ИТ" 
+    }
+  }
+}
+
+{
+  "query": "mutation ($code: String!) { delPulpit(pulpit: $code) }",
+  "variables": {
+    "code": "ТКП"
+  }
+}
+
+
+{
+  "query": "mutation ($input: SubjectInput!) { setSubject(subject: $input) { subject, subject_name, pulpit } }",
+  "variables": {
+    "input": {
+      "subject": "ТСПД",
+      "subject_name": "Тестирование ПО",
+      "pulpit": "ИСиТ" 
+    }
+  }
+}
+
+
+{
+  "query": "mutation ($code: String!) { delSubject(subject: $code) }",
+  "variables": {
+    "code": "ТСПД"
+  }
+}
+
+
+
+{
+  "query": "mutation ($input: TeacherInput!) { setTeacher(teacher: $input) { teacher, teacher_name, pulpit } }",
+  "variables": {
+    "input": {
+      "teacher": "ТИИ",
+      "teacher_name": "Тестов И. И.",
+      "pulpit": "ИСиТ" 
+    }
+  }
+}
+
+
+
+{
+  "query": "mutation ($code: String!) { delTeacher(teacher: $code) }",
+  "variables": {
+    "code": "ТИИ"
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
